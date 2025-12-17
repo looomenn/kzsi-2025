@@ -1,4 +1,4 @@
-#import "@local/uni:0.2.0": *
+#import "../templates/lib.typ": project, code_box
  
 #let std_name = sys.inputs.at("name", default: "looomenn")
 #let std_group = sys.inputs.at("group", default: "XX-00")
