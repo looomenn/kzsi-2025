@@ -28,7 +28,7 @@ jobs:
           if [ -d "$TAG_NAME" ]; then
             echo "Compiling $TAG_NAME/report.typ..."
 
-            typst compile --root . "$TAG_NAME/report.typ" "$TAG_NAME/report.pdf"
+            typst compile --root . --font-path templates/fonts "$TAG_NAME/report.typ" "$TAG_NAME/report.pdf"
 
           else
             echo "Error: Directory $TAG_NAME not found!"
