@@ -18,14 +18,12 @@ jobs:
         uses: typst-community/setup-typst@v3
       - name: Compile PDF
         run: |
-          # Отримуємо ім'я тегу (наприклад, lab01)
           TAG_NAME=${GITHUB_REF#refs/tags/}
           echo "Processing tag: $TAG_NAME"
 
-          # Перевіряємо, чи існує така папка
           if [ -d "$TAG_NAME" ]; then
-          echo "Compiling $TAG_NAME/main.typ..."
-          typst compile "$TAG_NAME/main.typ" "$TAG_NAME/report.pdf"
+          echo "Compiling $TAG_NAME/report.typ..."
+          typst compile "$TAG_NAME/report.typ" "$TAG_NAME/report.pdf"
           else
           echo "Error: Directory $TAG_NAME not found!"
           exit 1
@@ -36,5 +34,5 @@ jobs:
         with:
           files: |
             */*.pdf
-            name: "Звіт: $GITHUB_REF_NAME" # Гарна назва релізу
+            name: "Report: $GITHUB_REF_NAME"
             generate_release_notes: true
