@@ -22,11 +22,13 @@ jobs:
           echo "Processing tag: $TAG_NAME"
 
           if [ -d "$TAG_NAME" ]; then
-          echo "Compiling $TAG_NAME/report.typ..."
-          typst compile "$TAG_NAME/report.typ" "$TAG_NAME/report.pdf"
+            echo "Compiling $TAG_NAME/report.typ..."
+
+            typst compile --root . "$TAG_NAME/report.typ" "$TAG_NAME/report.pdf"
+
           else
-          echo "Error: Directory $TAG_NAME not found!"
-          exit 1
+            echo "Error: Directory $TAG_NAME not found!"
+            exit 1
           fi
 
       - name: Create Release
