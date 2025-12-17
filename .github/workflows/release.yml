@@ -1,0 +1,40 @@
+name: Release Lab PDF
+
+on:
+  push:
+    tags:
+      - 'lab*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
+      - name: Compile PDF
+        run: |
+          # Отримуємо ім'я тегу (наприклад, lab01)
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          echo "Processing tag: $TAG_NAME"
+
+          # Перевіряємо, чи існує така папка
+          if [ -d "$TAG_NAME" ]; then
+          echo "Compiling $TAG_NAME/main.typ..."
+          typst compile "$TAG_NAME/main.typ" "$TAG_NAME/report.pdf"
+          else
+          echo "Error: Directory $TAG_NAME not found!"
+          exit 1
+          fi
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            */*.pdf
+            name: "Звіт: $GITHUB_REF_NAME" # Гарна назва релізу
+            generate_release_notes: true
