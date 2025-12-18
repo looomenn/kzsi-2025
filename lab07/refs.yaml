@@ -1,0 +1,17 @@
+pycode:
+  type: misc
+  title: 'Вихідний python код до практикуму №7'
+  author: 'looomenn'
+  date: 2025
+  url: https://github.com/looomenn/kzsi-2025/blob/0e09971134d3d9a872062034ea80717655830e6b/lab07/src/main.py
+  version: 'commit 0e09971'
+  organization: 'GitHub Repository'
+
+matcode:
+  type: misc
+  title: 'Вихідний MATLAB код до практикуму №7'
+  author: 'looomenn'
+  date: 2025
+  url: https://github.com/looomenn/kzsi-2025/blob/0e09971134d3d9a872062034ea80717655830e6b/lab07/src/main.m
+  version: 'commit 0e09971'
+  organization: 'GitHub Repository'
